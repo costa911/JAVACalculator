@@ -1,0 +1,2 @@
+# JAVACalculator
+Academic project
