@@ -1,3 +1,3 @@
 # JAVACalculator
 Academic project: End of unit 2 activity: Create a calculation software
-![Costa's Video - Jun 4, 2024 (1)](https://github.com/costa911/JAVACalculator/assets/102555905/c1cfbe0c-99b6-40a6-bf07-73648212b76a)
+![part1endofactivityunit2](https://github.com/costa911/JAVACalculator/assets/102555905/44c5229e-f5bd-40c9-b06b-9cef788eef29)
