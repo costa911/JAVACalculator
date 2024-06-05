@@ -3,59 +3,78 @@ import java.util.Scanner;
 public class Calculator {
 
     public void calculate() {
-        // Create a scanner instance to read data from console
         Scanner scanner = new Scanner(System.in);
 
-        // Run the calculator in a while loop for multiple calculations
         while (true) {
-            // Get the 3 inputs required for calculation from user and store in variables
             System.out.println("Enter the first number (or type 'exit' to quit):");
             if (scanner.hasNext("exit")) {
                 break;
             }
             double numberOne = scanner.nextDouble();
 
-            System.out.println("Enter the operator (+, -, *, /):");
+            System.out.println("Enter the operator (+, -, *, /, inv, sqrt, sq):");
             String operator = scanner.next();
 
-            System.out.println("Enter the second number:");
-            double numberTwo = scanner.nextDouble();
-
-            // Create a variable to store result
-            double result = 0;
-
-            // Use the if/else-if structure to check what the operator is.
-            if (operator.equals("+")) {
-                result = numberOne + numberTwo;
-            } else if (operator.equals("-")) {
-                result = numberOne - numberTwo;
-            } else if (operator.equals("/")) {
-                if (numberTwo != 0) {
-                    result = numberOne / numberTwo;
-                } else {
-                    System.out.println("Error! Division by zero.");
-                    continue;
-                }
-            } else if (operator.equals("*")) {
-                result = numberOne * numberTwo;
-            } else {
-                System.out.println("Unknown operator");
-                continue;
+            double numberTwo = 0;
+            if (!operator.equals("inv") && !operator.equals("sqrt") && !operator.equals("sq")) {
+                System.out.println("Enter the second number:");
+                numberTwo = scanner.nextDouble();
             }
 
-            // Print the result on console screen
+            double result = 0;
+
+            switch (operator) {
+                case "+":
+                    result = numberOne + numberTwo;
+                    break;
+                case "-":
+                    result = numberOne - numberTwo;
+                    break;
+                case "*":
+                    result = numberOne * numberTwo;
+                    break;
+                case "/":
+                    if (numberTwo != 0) {
+                        result = numberOne / numberTwo;
+                    } else {
+                        System.out.println("Error! Division by zero.");
+                        continue;
+                    }
+                    break;
+                case "inv":
+                    result = 1 / numberOne;
+                    break;
+                case "sqrt":
+                    if (numberOne >= 0) {
+                        result = Math.sqrt(numberOne);
+                    } else {
+                        System.out.println("Error! Cannot take the square root of a negative number.");
+                        continue;
+                    }
+                    break;
+                case "sq":
+                    result = numberOne * numberOne;
+                    break;
+                default:
+                    System.out.println("Unknown operator");
+                    continue;
+            }
+
             System.out.println("Result is: " + result);
+
+            System.out.println("Do you want to continue? (y/n)");
+            String continueOption = scanner.next();
+            if (!continueOption.equalsIgnoreCase("y")) {
+                break;
+            }
         }
 
         scanner.close();
         System.out.println("Calculator closed.");
     }
 
-    // Every executable class must contain a 'main'
     public static void main(String[] args) {
-        // Create a new instance of class Calculator
         Calculator cal = new Calculator();
-        // Call the function 'calculate'
         cal.calculate();
     }
 }
